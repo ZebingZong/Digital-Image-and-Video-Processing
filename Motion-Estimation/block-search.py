@@ -1,4 +1,5 @@
 import sys
+import time
 from scipy import misc
 
 # Read image
@@ -9,6 +10,9 @@ frame2 = misc.imread("frame_2.jpg")
 frame1 = frame1.astype(float)
 frame2 = frame2.astype(float)
 (row, col) = frame1.shape
+
+# The starting point of main algorithm
+start_time = time.time()
 
 # Get the target block
 block_target = frame2[64:96, 80:112]
@@ -30,6 +34,7 @@ for i in range(row - a):
 			min_j = j
 			min_SAE = sum
 
+print ("--- %s seconds ---" % (time.time() - start_time))
 print min_i
 print min_j
 print min_SAE/32/32
